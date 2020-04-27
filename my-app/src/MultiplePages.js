@@ -7,6 +7,7 @@ import EachUser from './Pages/EachUser';
 
 
 
+
 class MultiplePages extends React.Component {
     render() {
         return (
@@ -19,7 +20,7 @@ class MultiplePages extends React.Component {
             <Route exact path='/home'><Home/></Route>
             <Route exact path='/users'><Users/></Route>
             <Route exact path='/about'><About/></Route>
-            <Route exact path='/users/:id'   component={EachUser}></Route>
+            <Route exact path='/users/:id' component={EachUser}></Route>
 
             </Router>
         )
