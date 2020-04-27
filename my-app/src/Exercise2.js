@@ -28,7 +28,7 @@ class Exercise2 extends Component {
 
         return (
             <div>
-                <h1>exercie 2 additional</h1>
+                <h1>exercie 2l</h1>
                 <h2>Curren result: {result}</h2>
                 <div className="buttons">
                     <button value="-5" onClick={this.calculate}>-5</button>
