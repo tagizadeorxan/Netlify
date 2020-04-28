@@ -12,9 +12,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 // Create connection
 const db = mysql.createConnection({
   
-    host     : 'localhost',
-    user     : 'root',
-    password : 'password'
+    host     : 'sql7.freemysqlhosting.net',
+    user     : 'sql7336363',
+    password : 'HY2Lz7LxZP'
     
 });
 
@@ -30,7 +30,7 @@ db.connect((err) => {
 app.post('/register', (req, res) => {
    
     let post = {email:req.body.email, password:req.body.password};
-    let sql = 'INSERT INTO tagizadeorxanreactapp.registration SET ?';
+    let sql = 'INSERT INTO sql7336363.registration SET ?';
     let query = db.query(sql, post, (err, result) => {
         if(err) throw err;
         console.log(result);
@@ -41,7 +41,7 @@ app.post('/register', (req, res) => {
 
 // Select single post
 app.get('/getemail/:email', (req, res) => {
-    let sql = `SELECT * FROM tagizadeorxanreactapp.registration WHERE email = '${req.params.email}'`;
+    let sql = `SELECT * FROM sql7336363.registration WHERE email = '${req.params.email}'`;
     console.log(sql);
     let query = db.query(sql, (err, result) => {
         if(err) throw err;
