@@ -178,3 +178,46 @@ code {
   width:250px;
   margin-left: 500px;
 }
+
+
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top:150px;
+  text-align: center;
+}
+
+.labels {
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+  margin-right: 10px;
+  margin-top: 2px;
+ 
+}
+
+.labels label {
+  margin-bottom: 13px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs input {
+  margin-bottom: 10px;
+}
+
+form button {
+  margin-left: 20px;
+  height: 35px;
+  margin-top:10px;
+}
+
+.info {
+  font-size: small;
+  font-style: italic;
+  margin-top: 15px;
+}

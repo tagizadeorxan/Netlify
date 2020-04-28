@@ -27,43 +27,71 @@ db.connect((err) => {
 });
 
 
-
-// Create DB
-app.get('/createdb', (req, res) => {
-    let sql = 'CREATE DATABASE tagizadeorxan';
-    db.query(sql, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        console.log("result is showing here");
-        res.send('Database created...');
-    });
-});
-
-//Create table
-app.get('/createpoststable', (req, res) => {
-    let sql = 'CREATE TABLE tagizadeorxan.post(id int AUTO_INCREMENT, title VARCHAR(255), body VARCHAR(255), PRIMARY KEY(id))';
-    db.query(sql, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        console.log("result is showing here");
-        res.send('Posts table created...');
-    });
-});
-
-// // Insert post 1
-app.post('/addpost1', (req, res) => {
+app.post('/register', (req, res) => {
    
-    let post = {title:req.body.title, body:req.body.body};
-    let sql = 'INSERT INTO newmysqldb.post SET ?';
+    let post = {email:req.body.email, password:req.body.password};
+    let sql = 'INSERT INTO tagizadeorxanreactapp.registration SET ?';
     let query = db.query(sql, post, (err, result) => {
         if(err) throw err;
         console.log(result);
-      
-    
-        console.log("result is showing here");
-        res.send('Post 1 added...');
+        res.send('user registered...');
     });
 });
+
+
+// Select single post
+app.get('/getemail/:email', (req, res) => {
+    let sql = `SELECT * FROM tagizadeorxanreactapp.registration WHERE email = '${req.params.email}'`;
+    console.log(sql);
+    let query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+});
+
+
+
+
+
+
+// // Create DB
+// app.get('/createdb', (req, res) => {
+//     let sql = 'CREATE DATABASE tagizadeorxan';
+//     db.query(sql, (err, result) => {
+//         if(err) throw err;
+//         console.log(result);
+//         console.log("result is showing here");
+//         res.send('Database created...');
+//     });
+// });
+
+// //Create table
+// app.get('/createpoststable', (req, res) => {
+//     let sql = 'CREATE TABLE tagizadeorxan.post(id int AUTO_INCREMENT, title VARCHAR(255), body VARCHAR(255), PRIMARY KEY(id))';
+//     db.query(sql, (err, result) => {
+//         if(err) throw err;
+//         console.log(result);
+//         console.log("result is showing here");
+//         res.send('Posts table created...');
+//     });
+// });
+
+// // // Insert post 1
+// app.post('/addpost1', (req, res) => {
+   
+//     let post = {title:req.body.title, body:req.body.body};
+//     let sql = 'INSERT INTO newmysqldb.post SET ?';
+//     let query = db.query(sql, post, (err, result) => {
+//         if(err) throw err;
+//         console.log(result);
+      
+    
+//         console.log("result is showing here");
+//         res.send('Post 1 added...');
+//     });
+// });
+
 
 // // Insert post 2
 // app.get('/addpost2', (req, res) => {
