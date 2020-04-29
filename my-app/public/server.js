@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 //type nodemon to run server
 
-// Create connection
+// Online connection
 const db = mysql.createConnection({
   
     host     : 'sql7.freemysqlhosting.net',
@@ -17,6 +17,15 @@ const db = mysql.createConnection({
     password : 'HY2Lz7LxZP'
     
 });
+
+//Local connection
+// const db = mysql.createConnection({
+  
+//     host     : 'localhost',
+//     user     : 'root',
+//     password : 'password'
+    
+// });
 
 // Connect
 db.connect((err) => {

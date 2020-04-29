@@ -53,11 +53,12 @@ checkData = (emailvalue,passwordvalue)=> {
 
 
 addData = (emailvalue,passwordvalue) => {
-    console.log("working")
+    
     let options = {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
             // 'Content-Type': 'application/x-www-form-urlencoded',
           },
         body: JSON.stringify({
