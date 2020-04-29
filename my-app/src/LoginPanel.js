@@ -47,7 +47,7 @@ register = (e) => {
 
 
 checkData = (emailvalue,passwordvalue)=> {
-    fetch(`http://localhost:3000/getemail/${emailvalue}`).then(data=> data.json()).then(data => data.length<1 ? this.addData(emailvalue,passwordvalue) :alert(`sizin qeydiyyatiniz var`));
+    fetch(`http://sql7.freemysqlhosting.net/getemail/${emailvalue}`).then(data=> data.json()).then(data => data.length<1 ? this.addData(emailvalue,passwordvalue) :alert(`sizin qeydiyyatiniz var`));
 }
 
 
@@ -66,7 +66,7 @@ addData = (emailvalue,passwordvalue) => {
             password: passwordvalue
         })
     };
-    fetch("http://localhost:3000/register", options);
+    fetch("http://sql7.freemysqlhosting.net/register", options);
 
 
 
