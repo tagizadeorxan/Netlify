@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 //type nodemon to run server
 
 // Online connection
-const db = mysql.createConnection({
+const db = mysql.createPool({
   
     host : 'a2plcpnl0154.prod.iad2.secureserver.net',
     user     : 'sql7336363',
@@ -18,26 +18,6 @@ const db = mysql.createConnection({
    
 
 });
-
-//Local connection
-// const db = mysql.createConnection({
-  
-//     host     : 'localhost',
-//     user     : 'root',
-//     password : 'password'
-    
-// });
-
-// Connect
-db.connect((err) => {
-    if(err){
-        throw err;
-        
-    }
-    console.log('MySql Connected...');
-});
-
-
 
 
 
