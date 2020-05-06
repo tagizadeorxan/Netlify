@@ -16,6 +16,7 @@ state = {email:false,emailvalue:'', password:false,passwordvalue:''};
 
 emailcheck = (e) => {
       let email = e.target.value;
+      
       const correct = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let result = correct.test(email.toLowerCase()) === true ? this.setState({email:true,emailvalue:email}) : this.setState({email:false});
     return result;
@@ -23,6 +24,7 @@ emailcheck = (e) => {
 
 passwordcheck = (e) => {
     let password = e.target.value;
+   
     const correct = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
     let result = correct.test(password) === true ? this.setState({password:true,passwordvalue:password}) : this.setState({password:false});
     return result;
@@ -30,10 +32,13 @@ passwordcheck = (e) => {
 
 login = (e) => {
     e.preventDefault();
-    const {email,password} = this.state;
+    const {email, emailvalue,password, passwordvalue} = this.state;
     console.log(email);
     console.log(password);
     let result = (email === true && password === true) ? true : false;
+    if(result){
+        this.checkData(emailvalue,passwordvalue);
+    }
     return result;
 }
 
@@ -47,26 +52,26 @@ register = (e) => {
 
 
 checkData = (emailvalue,passwordvalue)=> {
-    fetch(`http://localhost:3000/getemail/${emailvalue}`).then(data=> data.json()).then(data => data.length<1 ? this.addData(emailvalue,passwordvalue) :alert(`sizin qeydiyyatiniz var`));
+    console.log(emailvalue,passwordvalue);
+    fetch(`http://localhost:3306/getemail/${emailvalue}`).then(data=> data.json()).then(data => data.length<1 ? this.addData(emailvalue,passwordvalue) :alert(`sizin qeydiyyatiniz var`));
 }
 
 
 
 addData = (emailvalue,passwordvalue) => {
-    
+    console.log('add');
     let options = {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
           },
         body: JSON.stringify({
             email: emailvalue,
             password: passwordvalue
         })
     };
-    fetch("http://localhost:3000/register", options);
+    fetch("http://localhost:3306/register", options);
 
 
 

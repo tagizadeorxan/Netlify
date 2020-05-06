@@ -12,10 +12,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 // Online connection
 const db = mysql.createConnection({
   
-    host     : 'sql7.freemysqlhosting.net',
+    host : 'a2plcpnl0154.prod.iad2.secureserver.net',
     user     : 'sql7336363',
-    password : 'HY2Lz7LxZP'
-    
+    password : 'Orxan1992!',
+   
+
 });
 
 //Local connection
@@ -31,13 +32,17 @@ const db = mysql.createConnection({
 db.connect((err) => {
     if(err){
         throw err;
+        
     }
     console.log('MySql Connected...');
 });
 
 
+
+
+
 app.post('/register', (req, res) => {
-   
+    console.log("ok")
     let post = {email:req.body.email, password:req.body.password};
     let sql = 'INSERT INTO sql7336363.registration SET ?';
     let query = db.query(sql, post, (err, result) => {
@@ -50,11 +55,13 @@ app.post('/register', (req, res) => {
 
 // Select single post
 app.get('/getemail/:email', (req, res) => {
+    
     let sql = `SELECT * FROM sql7336363.registration WHERE email = '${req.params.email}'`;
     console.log(sql);
     let query = db.query(sql, (err, result) => {
         if(err) throw err;
-        console.log(result);
+        console.log(err);
+        console.log('test',result);
         res.send(result);
     });
 });
@@ -155,6 +162,6 @@ app.get('/getemail/:email', (req, res) => {
 //     });
 // });
 
-app.listen('3000', () => {
-    console.log('Server started on port 3000');
+app.listen(3306, () => {
+    console.log('Server started on port 3306');
 });
